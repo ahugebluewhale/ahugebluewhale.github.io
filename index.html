@@ -5,10 +5,58 @@
 	<title>15.06.2014 - не просто дата</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
+<style>
+	.date-row{
+		text-align: center;
+		padding: 30px;
+	}
+	.date-row h1{
+		position: relative;
+	}
+	.label{
+		position: absolute;
+		top: -16px;
+		margin-left: -80px;
+		font-size: 12px;
+	}
+</style>
 <body>
-	<p>lipsum</p>
-	<p>lorem</p>
-	<p>amet</p>
+	<div class="container">
+		<div class="row date-row">
+			<div class="col-sm-12" >
+				<h1>1279 днів та <span id="dateNow"></span> <span class="label">ми разом уже</span></h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 col-md-6"></div>
+			<div class="col-sm-12 col-md-6"></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 col-md-6"></div>
+			<div class="col-sm-12 col-md-6"></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 col-md-6"></div>
+			<div class="col-sm-12 col-md-6"></div>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function(){
+			function currentDate(){
+				let now = new Date();
+				let hours = now.getHours();
+				let minutes = now.getMinutes();
+				let seconds = now.getSeconds();
+				let miliseconds = now.getMilliseconds();
+				let datestring = `${hours} год. ${minutes} хв. ${seconds} с. ${Math.floor(miliseconds/100)} мс.`;
+				$('#dateNow').text(datestring);
+			}
+			setInterval(function(){
+				currentDate();
+			}, 100);
+		});
+	</script>
 </body>
 </html>
